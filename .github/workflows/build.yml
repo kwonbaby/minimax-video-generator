@@ -24,8 +24,8 @@ jobs:
         pip install -r requirements.txt
     
     - name: Build with PyInstaller
-      run: |
-        pyinstaller --onefile --windowed --name MiniMaxVideoGenerator main.py
+  run: |
+    pyinstaller --onefile --windowed --runtime-hook=hook.py --hidden-import=numpy --hidden-import=pandas._libs.interval --hidden-import=pandas._libs.lib --name MiniMaxVideoGenerator main.py
     
     - name: Upload executable
       uses: actions/upload-artifact@v4
