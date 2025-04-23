@@ -10,10 +10,10 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
     
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: '3.9'
     
@@ -25,10 +25,10 @@ jobs:
     
     - name: Build with PyInstaller
       run: |
-        pyinstaller --onefile --windowed --icon=app_icon.ico --add-data "app_icon.ico;." --name MiniMaxVideoGenerator main.py
+        pyinstaller --onefile --windowed --name MiniMaxVideoGenerator main.py
     
     - name: Upload executable
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: MiniMaxVideoGenerator
         path: dist/MiniMaxVideoGenerator.exe
